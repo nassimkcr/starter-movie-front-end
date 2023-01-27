@@ -11,9 +11,11 @@ function MoviesList() {
     setError(null);
     const abortController = new AbortController();
     listMovies(abortController.signal).then(setMovies).catch(setError);
-
+    console.log(movies)
     return () => abortController.abort();
   }, []);
+
+  
 
   const list = movies.map((movie) => (
     <article key={movie.movie_id} className="col-sm-12 col-md-6 col-lg-3 my-2">

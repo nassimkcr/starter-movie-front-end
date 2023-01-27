@@ -1,5 +1,5 @@
 const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL || "https://nk-movies-backend.onrender.com";
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:5005";
 
 /**
  * Defines the default headers for these functions to work with `json-server`
@@ -67,7 +67,7 @@ function populateTheaters(signal) {
  *  a promise that resolves to a possibly empty array of movies saved in the database.
  */
 export async function listMovies(signal) {
-  const url = new URL(`${API_BASE_URL}/movies?is_showing=true`);
+  const url = new URL(`${API_BASE_URL}/movies`);
   const addReviews = populateReviews(signal);
   return await fetchJson(url, { headers, signal }, []).then((movies) =>
     Promise.all(movies.map(addReviews))

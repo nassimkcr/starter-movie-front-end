@@ -19,6 +19,7 @@ function FullMovie() {
     setError(null);
     const abortController = new AbortController();
     readMovie(movieId, abortController.signal).then(setMovie).catch(setError);
+    console.log(movie)
     return () => abortController.abort();
   }
 
